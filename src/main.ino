@@ -24,6 +24,7 @@ void callback_response(coapPacket &packet, IPAddress ip, int port) {
     char p[packet.payloadlen + 1];
     memcpy(p, packet.payload, packet.payloadlen);
     p[packet.payloadlen] = NULL;
+    String message(p);
 
     //response from coap server
     if(packet.type==3 && packet.code==0)
@@ -34,7 +35,24 @@ void callback_response(coapPacket &packet, IPAddress ip, int port) {
     {
       Serial.println("ACK");
     }
-    Serial.print("packet:");Serial.print(packet.payloadlen);Serial.print("->");Serial.println(p);
+    Serial.print("packet:");Serial.print(packet.payloadlen);
+    Serial.print("->");
+    // Serial.print((char)packet.payload);
+    for(int i=0;i<packet.payloadlen;i++){
+        char _temp = (char)packet.payload[i];
+        if(_temp) Serial.print(_temp);
+    }
+    // memset(packet.payload,int(0), packet.payloadlen);
+    Serial.print("->");Serial.println(packet.type);
+    Serial.print("String:");Serial.println(message);
+    Serial.print("msgID:");Serial.println(packet.messageid);
+
+
+
+    for(int i = 0 ; i < packet.optionnum;i++)
+    {
+        Serial.print("number:");Serial.println(packet.options[i].number);
+    }
 }
 
 void setup() {
@@ -118,11 +136,11 @@ void loop() {
 //      uint8_t query_number[] = {15,15,15};
 //      char* payload = "</1>, </2>, </3>, </4>, </5>";
 //      coap.post(leshan,port,"rd",payload, strlen(payload), query_number, query);
-    state= coap.loop();
-    // Serial.print("state=");
-    //Serial.println(state);
-    //if(state==true)
-          //i=i+1;
+    state = coap.loop();
+    Serial.print("state:");Serial.println(state);
+    if(state==1){
+       
+    }   
   
     //Serial.print("i=");
     //Serial.println(i);
