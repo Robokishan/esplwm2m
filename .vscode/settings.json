@@ -1,6 +1,0 @@
-{
-    "terminal.integrated.env.linux": {
-        "PATH": "/home/kishan/.platformio/penv/bin:/home/kishan/.platformio/penv:/home/kishan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/cuda/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl",
-        "PLATFORMIO_CALLER": "vscode"
-    }
-}
