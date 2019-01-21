@@ -1,3 +1,6 @@
 [submodule "lib/ESP-CoAP"]
 	path = lib/ESP-CoAP
 	url = https://github.com/Robokishan/ESP-CoAP.git
+[submodule "lib/CoAP-simple-library"]
+	path = lib/CoAP-simple-library
+	url = https://github.com/hirotakaster/CoAP-simple-library.git
